@@ -11,6 +11,6 @@ for plugin in $(wp plugin list --skip-{plugins,themes} | grep inactive | awk '{p
 for theme in $(wp theme list --skip-{plugins,themes} | grep inactive | grep -v 'twentytwenty' | awk '{print $1}'); do rm -rf ./wp-content/themes/$theme; done
 # update everything
 wp core download --force
-wp plugin update --all --skip-themes --skip-plugins
-wp theme update --all --skip-plugins --skip-themes
+wp plugin update --all --skip-{plugins,themes}
+wp theme update --all --skip-{plugins,themes}
 fi
